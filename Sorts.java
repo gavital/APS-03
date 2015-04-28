@@ -24,5 +24,24 @@ public class Sorts{
     return imagens;
   }
 
+ // ********  ARRUMAR
+ // shellsort: calcular o tamanho do salto inicial (tamanho total da lista/2) e comparar até chegar no fim da lista
+ // divide de novo o valor do salto, compara até chegar no fim da lista. Faz isso até chegar no tamanho 1.
+ public static void shellSort(ArrayList<Imagem> imagens){
+	  // cria laço de repetição para calcular o valor dos "pulos" (gap)
+	  for(int gap = imagens.size()/2; gap > 0; gap /= 2){
+		  
+		  // laço de repetição para comparar e organizar os valores
+		  for (int i = gap; i < imagens.size(); i++){ // percorrendo a lista
+		  // rever a partir daqui
+			  long val = imagens.get(i).getTamanhoBytes();
+			  int j;
+			  for (j = i; j >= gap && imagens.get(j-gap).compareTo(val) > 0; j -= gap){ // arrumar essa linha
+				  Imagem t = imagens.get(j - gap); 
+			  }
+		  }
+	  }
+	  
+	  
   //coloque outros métodos aqui
 }
