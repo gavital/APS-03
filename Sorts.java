@@ -44,4 +44,23 @@ public class Sorts{
 	  
 	  
   //coloque outros métodos aqui
+  
+  public static ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens){
+	  // cria laço de repetição para calcular o valor dos "pulos" (gap)
+	  for(int gap = imagens.size()/2; gap > 0; gap /= 2){
+		  
+		  // laço de repetição para comparar e organizar os valores
+		  for (int i = gap; i < imagens.size(); i++){ // percorrendo a lista
+
+			  Imagem tempVal = imagens.get(i); // recebe o valor que vai ser comparado
+			  
+			  int j;
+			  
+			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){ // arrumar essa linha
+				  imagens.set(j) = imagens.get(j - gap); 
+			  }
+			  imagens.set(j) = tempVal;
+		  }
+	  }
+	  return imagens;
 }
