@@ -24,27 +24,9 @@ public class Sorts{
     return imagens;
   }
 
- // ********  ARRUMAR
- // shellsort: calcular o tamanho do salto inicial (tamanho total da lista/2) e comparar até chegar no fim da lista
- // divide de novo o valor do salto, compara até chegar no fim da lista. Faz isso até chegar no tamanho 1.
- public static void shellSort(ArrayList<Imagem> imagens){
-	  // cria laço de repetição para calcular o valor dos "pulos" (gap)
-	  for(int gap = imagens.size()/2; gap > 0; gap /= 2){
-		  
-		  // laço de repetição para comparar e organizar os valores
-		  for (int i = gap; i < imagens.size(); i++){ // percorrendo a lista
-		  // rever a partir daqui
-			  long val = imagens.get(i).getTamanhoBytes();
-			  int j;
-			  for (j = i; j >= gap && imagens.get(j-gap).compareTo(val) > 0; j -= gap){ // arrumar essa linha
-				  Imagem t = imagens.get(j - gap); 
-			  }
-		  }
-	  }
-	  
-	  
   //coloque outros métodos aqui
   
+  // Shellsort GABI
   public static ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens){
 	  // cria laço de repetição para calcular o valor dos "pulos" (gap)
 	  for(int gap = imagens.size()/2; gap > 0; gap /= 2){
@@ -52,12 +34,13 @@ public class Sorts{
 		  // laço de repetição para comparar e organizar os valores
 		  for (int i = gap; i < imagens.size(); i++){ // percorrendo a lista
 
-			  Imagem tempVal = imagens.get(i); // recebe o valor que vai ser comparado
+			  Imagem tempVal = imagens.get(i); // recebe o valor temporário que vai ser comparado
 			  
-			  int j;
+			  int j; // variável para procurar o 2o valor a ser comparado
 			  
-			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){ // arrumar essa linha
-				  imagens.set(j) = imagens.get(j - gap); 
+			  // comparando os elementos
+			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
+				  imagens.set(j) = imagens.get(j - gap); // trocando...
 			  }
 			  imagens.set(j) = tempVal;
 		  }
